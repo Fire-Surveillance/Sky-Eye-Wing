@@ -92,18 +92,21 @@ group = displayio.Group()
 
 min_label = Label(terminalio.FONT, color=palette[0], x=0, y=110)
 max_label = Label(terminalio.FONT, color=palette[last_color], x=80, y=110)
-statustitlelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=10)
-statustextlabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=20)
-lastimagelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=30)
-timestamplabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=40)
-linelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=50)
+skyeyerangelabel = Label(terminalio.FONT, color=(173,216,230), x=135, y=10)
+seperatelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=20)
+statustitlelabel = Label(terminalio.FONT, color=(255,22,12), x=135, y=30)
+statustextlabel = Label(terminalio.FONT, color=(255,255,0), x=135, y=40)
+lastimagelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=50)
+timestamplabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=60)
+linelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=70)
 
-thresholdlabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=60)
-thresholdValueLabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=70)
+thresholdlabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=80)
+thresholdValueLabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=90)
 
-
-statustitlelabel.text = "Status:"
-statustextlabel.text = "No Image"
+skyeyerangelabel.text = "Sky Eye Wing V3.0"
+seperatelabel.text = "-----------------"
+statustitlelabel.text = "MAIN FIRE STATUS:"
+statustextlabel.text = "NO IMAGE..."
 lastimagelabel.text = "Latest Image: N/A"
 timestamplabel.text = "0"
 linelabel.text = "-----------------"
@@ -114,6 +117,8 @@ group.append(image_group)
 group.append(scale_group)
 group.append(min_label)
 group.append(max_label)
+group.append(skyeyerangelabel)
+group.append(seperatelabel)
 group.append(statustitlelabel)
 group.append(statustextlabel)
 group.append(lastimagelabel)
@@ -150,8 +155,8 @@ def showImage():
 
     if len(image) == image_size:
 
-        statustextlabel.text = "Image Recieved"
-        lastimagelabel.text = "%0.2f" % (stamp)
+        statustextlabel.text = "Image Recieved!"
+        lastimagelabel.text = "At %0.2f Seconds" % (stamp)
 
         # Calculate the percent
         fire_count = 0
@@ -184,7 +189,7 @@ def showImage():
         min_t = mini  # Automatically change the color scale
         max_t = maxi
     else:
-        statustextlabel.text = "Image Lost"
+        statustextlabel.text = "Image Lost..."
 
     packet_index = 0
     print(len(image))
@@ -227,7 +232,7 @@ while True:
                 pass
                 image.append(pixel)
 
-            print('missed packet...', packet_index, packet_data[0])
+            print('Missed Packet...', packet_index, packet_data[0])
             print(packet_data)
             packet_index = int(packet_data[0]) + 1
             str_data = packet_data[1].split(',')
