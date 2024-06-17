@@ -14,7 +14,7 @@ reset = digitalio.DigitalInOut(board.D6)
 rfm9x = adafruit_rfm9x.RFM9x(spi, cs, reset, 915.0)
 
 # Initialize I2C communication for MLX90640 thermal camera
-i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
+i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
 mlx = adafruit_mlx90640.MLX90640(i2c)
 print("MLX addr detected on I2C")
 print([hex(i) for i in mlx.serial_number])
@@ -59,7 +59,7 @@ while True:
     print("Current timestamp:", stamp)
 
     # Check if it's time to capture a new frame (every 1 second)
-    if (stamp - start_time) > 1:
+    if (stamp - start_time) > 0:
         try:
             mlx.getFrame(frame)
         except ValueError:
