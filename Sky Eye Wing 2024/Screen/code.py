@@ -100,9 +100,12 @@ lastimagelabel = Label(terminalio.FONT, color=(210,210,210), x=135, y=50)
 timestamplabel = Label(terminalio.FONT, color=(200,200,200), x=135, y=60)
 linelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=70)
 
+
 statslabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=80)
 thresholdlabel = Label(terminalio.FONT, color=(210,210,210), x=135, y=90)
 thresholdValueLabel = Label(terminalio.FONT, color=(200,200,200), x=135, y=100)
+seperatevertlabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=110)
+seperatevert2label = Label(terminalio.FONT, color=(255,255,255), x=135, y=120)
 
 skyeyerangelabel.text = "Sky Eye Wing V2.0"
 seperatelabel.text = "-----------------"
@@ -114,6 +117,8 @@ linelabel.text = "-----------------"
 statslabel.text = "FIRE STATUS:"
 thresholdlabel.text = "Fire Detect --%:"
 thresholdValueLabel.text = "Fire Temp: {:.0}C".format(THRESHOLD_TEMP)
+seperatevertlabel.text = "|       |       |"
+seperatevert2label.text = "|       |       |"
 # Add all the sub-group to the SuperGroup
 group.append(image_group)
 group.append(scale_group)
@@ -129,6 +134,8 @@ group.append(linelabel)
 group.append(statslabel)
 group.append(thresholdlabel)
 group.append(thresholdValueLabel)
+group.append(seperatevertlabel)
+group.append(seperatevert2label)
 # Add the SuperGroup to the Display
 board.DISPLAY.show(group)
 
