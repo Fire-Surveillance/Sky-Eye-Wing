@@ -92,16 +92,17 @@ group = displayio.Group()
 
 min_label = Label(terminalio.FONT, color=palette[0], x=0, y=110)
 max_label = Label(terminalio.FONT, color=palette[last_color], x=80, y=110)
-skyeyerangelabel = Label(terminalio.FONT, color=(173,216,230), x=135, y=10)
+skyeyerangelabel = Label(terminalio.FONT, color=(137,207,240), x=135, y=10)
 seperatelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=20)
 statustitlelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=30)
-statustextlabel = Label(terminalio.FONT, color=(255,22,12), x=135, y=40)
-lastimagelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=50)
-timestamplabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=60)
+statustextlabel = Label(terminalio.FONT, color=(255,0,0), x=135, y=40)
+lastimagelabel = Label(terminalio.FONT, color=(210,210,210), x=135, y=50)
+timestamplabel = Label(terminalio.FONT, color=(200,200,200), x=135, y=60)
 linelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=70)
 
-thresholdlabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=80)
-thresholdValueLabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=90)
+statslabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=80)
+thresholdlabel = Label(terminalio.FONT, color=(210,210,210), x=135, y=90)
+thresholdValueLabel = Label(terminalio.FONT, color=(200,200,200), x=135, y=100)
 
 skyeyerangelabel.text = "Sky Eye Wing V2.0"
 seperatelabel.text = "-----------------"
@@ -110,6 +111,7 @@ statustextlabel.text = "No Signal..."
 lastimagelabel.text = "Latest Image: N/A"
 timestamplabel.text = "0"
 linelabel.text = "-----------------"
+statslabel.text = "FIRE STATUS:"
 thresholdlabel.text = "Fire Detect --%:"
 thresholdValueLabel.text = "Fire Temp: {:.0}C".format(THRESHOLD_TEMP)
 # Add all the sub-group to the SuperGroup
@@ -124,6 +126,7 @@ group.append(statustextlabel)
 group.append(lastimagelabel)
 group.append(timestamplabel)
 group.append(linelabel)
+group.append(statslabel)
 group.append(thresholdlabel)
 group.append(thresholdValueLabel)
 # Add the SuperGroup to the Display
@@ -156,7 +159,7 @@ def showImage():
     if len(image) == image_size:
 
         statustextlabel.text = "Image Recieved!"
-        lastimagelabel.text = "At %0.2f Seconds" % (stamp)
+        lastimagelabel.text = "At %0.1f Seconds" % (stamp)
 
         # Calculate the percent
         fire_count = 0
@@ -206,7 +209,7 @@ packet_index = 0
 
 while True:
     stamp = time.monotonic() - start_time
-    timestamplabel.text = "Active Time: %0.0f" % (stamp)
+    timestamplabel.text = "Scout Time: %0.1f" % (stamp)
 
     packet = rfm9x.receive()
 
