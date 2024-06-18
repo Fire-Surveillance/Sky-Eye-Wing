@@ -92,14 +92,14 @@ board.DISPLAY.show(group)
 min_t = 20  # Initial minimum temperature range, before auto scale
 max_t = 37  # Initial maximum temperature range, before auto scale
 
-i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
+i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
 
 mlx = adafruit_mlx90640.MLX90640(i2c)
 print("MLX addr detected on I2C")
 print([hex(i) for i in mlx.serial_number])
 
 # mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_2_HZ
-mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
+mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_8_HZ
 
 frame = [0] * 768
 
@@ -137,10 +137,3 @@ while True:
     max_t = maxi
 #    print((mini, maxi))           # Use this line to display min and max graph in Mu
 #    print("Total time for aquisition and display %0.2f s" % (time.monotonic()-stamp))
-
-
-
-
-
-
-# Write your code here :-)
