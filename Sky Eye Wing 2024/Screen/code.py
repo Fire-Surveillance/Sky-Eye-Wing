@@ -94,8 +94,8 @@ min_label = Label(terminalio.FONT, color=palette[0], x=0, y=110)
 max_label = Label(terminalio.FONT, color=palette[last_color], x=80, y=110)
 skyeyerangelabel = Label(terminalio.FONT, color=(173,216,230), x=135, y=10)
 seperatelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=20)
-statustitlelabel = Label(terminalio.FONT, color=(255,22,12), x=135, y=30)
-statustextlabel = Label(terminalio.FONT, color=(255,255,0), x=135, y=40)
+statustitlelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=30)
+statustextlabel = Label(terminalio.FONT, color=(255,22,12), x=135, y=40)
 lastimagelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=50)
 timestamplabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=60)
 linelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=70)
@@ -103,10 +103,10 @@ linelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=70)
 thresholdlabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=80)
 thresholdValueLabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=90)
 
-skyeyerangelabel.text = "Sky Eye Wing V3.0"
+skyeyerangelabel.text = "Sky Eye Wing V2.0"
 seperatelabel.text = "-----------------"
-statustitlelabel.text = "MAIN FIRE STATUS:"
-statustextlabel.text = "NO IMAGE..."
+statustitlelabel.text = "SIGNAL STATUS:"
+statustextlabel.text = "No Signal..."
 lastimagelabel.text = "Latest Image: N/A"
 timestamplabel.text = "0"
 linelabel.text = "-----------------"
@@ -206,7 +206,7 @@ packet_index = 0
 
 while True:
     stamp = time.monotonic() - start_time
-    timestamplabel.text = "%0.0f" % (stamp)
+    timestamplabel.text = "Active Time: %0.0f" % (stamp)
 
     packet = rfm9x.receive()
 
