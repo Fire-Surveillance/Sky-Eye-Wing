@@ -11,7 +11,7 @@ from adafruit_display_text.label import Label
 from simpleio import map_range
 import adafruit_rfm9x
 
-THRESHOLD_TEMP=30
+THRESHOLD_TEMP=100
 
 #In Celsius
 #Temp of fire is 815 Celsius
@@ -115,7 +115,7 @@ lastimagelabel.text = "Latest Image: N/A"
 timestamplabel.text = "0"
 linelabel.text = "-----------------"
 statslabel.text = "FIRE STATUS:"
-thresholdlabel.text = "AI Fire Detect --%:"
+thresholdlabel.text = "AI Detection %"
 thresholdValueLabel.text = "Fire Temp: {:.0}C".format(THRESHOLD_TEMP)
 seperatevertlabel.text = "|       |       |"
 seperatevert2label.text = "|       |       |"
