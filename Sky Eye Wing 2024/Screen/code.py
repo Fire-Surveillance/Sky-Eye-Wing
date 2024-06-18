@@ -104,8 +104,8 @@ linelabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=70)
 statslabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=80)
 thresholdlabel = Label(terminalio.FONT, color=(210,210,210), x=135, y=90)
 thresholdValueLabel = Label(terminalio.FONT, color=(200,200,200), x=135, y=100)
-seperatevertlabel = Label(terminalio.FONT, color=(255,255,255), x=135, y=110)
-seperatevert2label = Label(terminalio.FONT, color=(255,255,255), x=135, y=120)
+seperatevertlabel = Label(terminalio.FONT, color=(190,190,190), x=135, y=110)
+seperatevert2label = Label(terminalio.FONT, color=(190,190,190), x=135, y=120)
 
 skyeyerangelabel.text = "Sky Eye Wing V2.0"
 seperatelabel.text = "-----------------"
